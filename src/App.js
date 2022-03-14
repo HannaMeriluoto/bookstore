@@ -43,7 +43,7 @@ function App() {
           </Typography>
         </Toolbar>
       </AppBar>
-      <AddBook  addBook={books} />
+      <AddBook  addBook={addBook} />
      <div className="ag-theme-material" style={ {height:400, width: 600, margin: 'auto'} }>
        <AgGridReact rowData={books}>
          <AgGridColumn sortable={true} filter={true} field='title' />
