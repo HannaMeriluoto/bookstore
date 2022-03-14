@@ -23,6 +23,17 @@ function App() {
     .catch(err => console.error(err))
   }
 
+
+  const addBook = (newBook) => {
+    fetch('https://bookstore-800ks-default-rtdb.firebaseio.com/books/.json',
+    {
+      method: 'POST',
+      body: JSON.stringify(newBook)
+    })
+    .then(response => fetchBooks())
+    .catch(err => console.error(err))
+  }
+
   return (
     <div className="App">
       <AppBar position="static">
@@ -32,7 +43,7 @@ function App() {
           </Typography>
         </Toolbar>
       </AppBar>
-      <AddBook />
+      <AddBook  addBook={books} />
      <div className="ag-theme-material" style={ {height:400, width: 600, margin: 'auto'} }>
        <AgGridReact rowData={books}>
          <AgGridColumn sortable={true} filter={true} field='title' />
