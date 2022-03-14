@@ -3,6 +3,7 @@ import { AgGridColumn, AgGridReact } from 'ag-grid-react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import AddBook from './components/AddBook';
 
 import './App.css';
 import 'ag-grid-community/dist/styles/ag-grid.css'
@@ -31,6 +32,7 @@ function App() {
           </Typography>
         </Toolbar>
       </AppBar>
+      <AddBook />
      <div className="ag-theme-material" style={ {height:400, width: 600, margin: 'auto'} }>
        <AgGridReact rowData={books}>
          <AgGridColumn sortable={true} filter={true} field='title' />
