@@ -23,6 +23,13 @@ function App() {
     .catch(err => console.error(err))
   }
 
+  // Add keys to the book objects
+  const addKeys = (data) => {
+    const keys = Object.keys(data);
+    const valueKeys = Object.values(data).map((item, index) =>
+    Object.defineProperty(item, 'id', {value: keys[index]}));
+    setBooks(valueKeys);
+  };
 
   const addBook = (newBook) => {
     fetch('https://bookstore-800ks-default-rtdb.firebaseio.com/books/.json',
