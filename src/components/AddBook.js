@@ -5,11 +5,10 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { Book } from '@material-ui/icons';
 
-function AddBook() {
+function AddBook(props) {
     const [open, setOpen] = useState(false);
-    const [book, setBook] = useState({title: '', author: '', year: '', Isbn: '', price:''})
+    const [book, setBook] = useState({title: '', author: '', year: '', isbn: '', price:''})
 
     const handleOpen = () => {
         setOpen(true);
@@ -17,6 +16,11 @@ function AddBook() {
 
     const handleClose = () => {
         setOpen(false);
+    }
+
+    const handleSave = () => {
+        props.addBook(book);
+        handleClose();
     }
 
     const inputChanged = (event) => {
@@ -74,7 +78,7 @@ function AddBook() {
                 </DialogContent>
                 <DialogActions>
                     <Button color="primary" onClick={handleClose}>Cancel</Button>
-                    <Button color="primary" onClick={handleClose}>Save</Button>
+                    <Button color="primary" onClick={handleSave}>Save</Button>
                 </DialogActions>
             </Dialog>
         </div>
